@@ -1,0 +1,89 @@
+//1 уровень сложности: // ФУНКЦИИ
+
+// 1. Написать функцию, которая принимает в качестве аргументов два числа и возращает их сумму
+
+function summa(a, b) {
+  return a + b;
+}
+console.log(summa(3, 5));
+console.log(summa(5, 34));
+console.log(summa(-5, 8));
+
+// 2. Написать функцию, принимающую массив с числами в качестве
+//аргумента и возвращающую новый новый массив с положительными числами
+
+const arr = [3, 6, -8, 9, -6, 56];
+
+function getPositiveNumbers(arr) {
+  return arr.filter((num) => num > 0);
+}
+
+const positiveNummeers = getPositiveNumbers(arr);
+console.log(positiveNummeers);
+
+// 3. Написать функцию, которая принимает 5 числовых аргументов и возращает самое большое число из них
+
+function getGrosserZahl(a, b, c, d, e) {
+  return Math.max(a, b, c, d, e);
+}
+
+console.log(getGrosserZahl(4, 78, 334, 123, 2));
+
+// 4. Написать функцию, которая принимает массив с числами и возращает самое большое число
+
+const arrNeu = [3, 6, 34, 1, 89];
+function getGrosserZahlVomMassiv(massiv) {
+  return Math.max(...massiv);
+}
+
+const maxNumber = getGrosserZahlVomMassiv(arrNeu);
+console.log(maxNumber);
+
+// 5. Написать функцию, которая принимает два числа и возвращает первое число, возведенное в степень сторого числа
+
+const sum3 = function (a, b) {
+  return a ** b;
+};
+
+console.log(sum3(4, 3));
+
+// 6. Написать функцию, которая принимает два массива и возвращает один массив, созданный из двух переданных
+
+function newMassiv(massiv1, massiv2) {
+  return [...massiv1, ...massiv2];
+}
+const arr2 = [3, 5, 7, 9];
+const arr3 = [45, 34, 67, 556];
+const newMassivFromTwo = newMassiv(arr2, arr3);
+console.log(newMassivFromTwo);
+
+// 7. Напишите стрелочную функцию, которая принимает массив чисел и возвращает
+// новый массив, содержащий только положительные чётные числа.
+
+const getPositiveNumbersMoreThanNull = (arr) => arr.filter((num) => num > 0 && num % 2 === 0);
+
+const array1 = [ 3,5,23,4,46,-56, -344, 16];
+
+console.log(getPositiveNumbersMoreThanNull(array1));
+
+
+// 8. Напишите стрелочную функцию, которая принимает две строки и возвращает самую длинную
+
+const getBiggerString = (str1, str2) => str1.length > str2.length ? str1 : str2;
+
+const string1 = "Kak dela?";
+const string2 = "Kak sam?";
+const newString = getBiggerString(string1,string2);
+console.log(newString);
+
+
+
+
+// 9. Напишите стрелочную функцию, которая принимает строку 
+//и возвращает её с первой буквой в верхнем регистре.
+
+const getBigStartOfString = (str3)=> str3.charAt(0).toUpperCase() + str3.slice(1);
+
+const slovo = "hallo";
+const newSlovo = getBigStartOfString(slovo);
+console.log(newSlovo);
