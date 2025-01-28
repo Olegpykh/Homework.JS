@@ -1,0 +1,149 @@
+
+.profile-card {
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 250px;
+  padding: 20px;
+  margin: 20px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.profile-card:hover {
+  transform: scale(1.05);
+}
+
+.avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+.profile-info h2 {
+  margin: 10px 0;
+  font-size: 1.5rem;
+}
+
+.profile-info p {
+  margin: 5px 0;
+  font-size: 1rem;
+  color: #555;
+}
+
+
+
+
+
+
+
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f7fc;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.app {
+  text-align: center;
+  padding-top: 50px;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+
+.profiles-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+
+
+import React from "react";
+import "./ProfileCard.css"; 
+
+const ProfileCard = ({ avatar, name, profession, hobby }) => {
+  return (
+    <div className="profile-card">
+      <img src={avatar} alt="Avatar" className="avatar" />
+      <div className="profile-info">
+        <h2>{name}</h2>
+        <p>
+          <strong>Профессия:</strong> {profession}
+        </p>
+        <p>
+          <strong>Хобби:</strong> {hobby}
+        </p>
+      </div>
+    </div>
+  );
+};
+
+export default ProfileCard;
+
+
+
+
+
+
+import React from 'react';
+import ProfileCard from './components/ProfileCard';
+import './styles.css';
+
+const App = () => {
+  const users = [
+    {
+      avatar: 'https://via.placeholder.com/150',
+      name: 'Иван Иванов',
+      profession: 'Программист',
+      hobby: 'Чтение книг',
+    },
+    {
+      avatar: 'https://via.placeholder.com/150',
+      name: 'Мария Петрова',
+      profession: 'Дизайнер',
+      hobby: 'Фотография',
+    },
+    {
+      avatar: 'https://via.placeholder.com/150',
+      name: 'Алексей Смирнов',
+      profession: 'Менеджер',
+      hobby: 'Путешествия',
+    },
+  ];
+
+  return (
+    <div className="app">
+      <h1>Профили пользователей</h1>
+      <div className="profiles-container">
+        {users.map((user, index) => (
+          <ProfileCard
+            key={index}
+            avatar={user.avatar}
+            name={user.name}
+            profession={user.profession}
+            hobby={user.hobby}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default App;
+
+
+
+

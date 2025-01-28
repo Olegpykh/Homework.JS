@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Добавить студента</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="form-container">
+        <form id="addnewstudent">
+            <input type="text" id="firstname" placeholder="Имя" required>
+            <input type="text" id="lastname" placeholder="Фамилия" required>
+            <input type="number" id="age" placeholder="Возраст" required>
+            <button type="submit">Добавить студента</button>
+        </form>
+    </div>
+
+    <div class="students-container" id="students-container">
+
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
+}
+
+.form-container {
+    margin-bottom: 30px;
+}
+
+form {
+    display: flex;
+    gap: 15px;
+}
+
+input {
+    padding: 10px;
+    font-size: 16px;
+    width: 150px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.students-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    width: 80%;
+}
+
+.student-card {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.student-card:hover {
+    transform: scale(1.05);
+}
+
+.student-card.pink {
+    background-color: #f8d7da;
+}
+
+.student-card p {
+    margin: 0;
+    font-size: 18px;
+}
+
+
+
+
+let allStudents = [];
+
+
+const form = document.getElementById("addnewstudent");
+const studentsContainer = document.getElementById("students-container");
+
+
+form.addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  
+  const firstname = document.getElementById("firstname").value;
+  const lastname = document.getElementById("lastname").value;
+  const age = document.getElementById("age").value;
+
+  
+  const newStudent = {
+    firstname: firstname,
+    lastname: lastname,
+    age: age,
+  };
+
+  
+  allStudents.push(newStudent);
+
+  
+  form.reset();
+
+  
+  console.log(newStudent);
+
+ 
+  renderStudents(allStudents);
+});
+
+
+function renderStudents(students) {
+  
+  studentsContainer.innerHTML = "";
+
+  
+  students.forEach((student) => {
+    
+    const studentCard = document.createElement("div");
+    studentCard.classList.add("student-card");
+
+   
+    if (parseInt(student.age) < 18) {
+      studentCard.classList.add("pink");
+    }
+
+   
+    studentCard.innerHTML = `
+            <p><strong>Имя:</strong> ${student.firstname}</p>
+            <p><strong>Фамилия:</strong> ${student.lastname}</p>
+            <p><strong>Возраст:</strong> ${student.age}</p>
+        `;
+
+   
+    studentsContainer.appendChild(studentCard);
+  });
+}
